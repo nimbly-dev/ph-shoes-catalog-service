@@ -15,6 +15,7 @@
 
 	<modules>
 		<module>ph-shoes-catalog-service-core</module>
+		<module>ph-shoes-catalog-service-web</module>
 	</modules>
 
 
