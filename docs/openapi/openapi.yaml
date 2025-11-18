@@ -1,0 +1,156 @@
+openapi: 3.1.0
+info:
+  title: PH Shoes — Catalog API
+  version: 1.0.0
+servers:
+  - url: /api/v1
+
+tags:
+  - name: CatalogProducts
+    description: Catalog endpoints for querying fact_product_shoes data.
+
+paths:
+  /fact-product-shoes:
+    get:
+      tags: [CatalogProducts]
+      summary: Search the PH Shoes catalog
+      operationId: listFactProductShoes
+      parameters:
+        - in: query
+          name: brand
+          required: false
+          schema: { type: string }
+          description: Filter by brand name (case-insensitive).
+        - in: query
+          name: gender
+          required: false
+          schema: { type: string }
+          description: Filter by gender.
+        - in: query
+          name: ageGroup
+          required: false
+          schema: { type: string }
+          description: Filter by age group.
+        - in: query
+          name: date
+          required: false
+          schema:
+            type: string
+            format: date
+          description: Filter by exact collection date (YYYY-MM-DD).
+        - in: query
+          name: startDate
+          required: false
+          schema:
+            type: string
+            format: date
+          description: Start of collection date range (inclusive).
+        - in: query
+          name: endDate
+          required: false
+          schema:
+            type: string
+            format: date
+          description: End of collection date range (inclusive).
+        - in: query
+          name: keyword
+          required: false
+          schema: { type: string }
+          description: Matches keyword against title/subtitle (case-insensitive).
+        - in: query
+          name: sizes
+          required: false
+          schema:
+            type: array
+            items: { type: string }
+          style: form
+          explode: false
+          description: Comma-separated list of sizes to match.
+        - in: query
+          name: onSale
+          required: false
+          schema:
+            type: boolean
+            default: false
+          description: When true, returns only entries where sale price is lower than original price.
+        - in: query
+          name: minPrice
+          required: false
+          schema:
+            type: number
+            format: double
+          description: Minimum final price (after sale) to include.
+        - in: query
+          name: maxPrice
+          required: false
+          schema:
+            type: number
+            format: double
+          description: Maximum final price (after sale) to include.
+        - in: query
+          name: page
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+          description: Zero-based page index.
+        - in: query
+          name: size
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 2500
+            default: 20
+          description: Page size (max 2500).
+        - in: query
+          name: sort
+          required: false
+          schema: { type: string }
+          description: Optional sort definition in the form `field,(asc|desc)`.
+      responses:
+        '200':
+          description: Page of catalog entries
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FactProductShoePage'
+        '400':
+          description: Invalid filters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /fact-product-shoes/latest:
+    get:
+      tags: [CatalogProducts]
+      summary: Latest dwid per brand
+      operationId: getLatestFactProductShoes
+      responses:
+        '200':
+          description: Latest snapshot id per brand currently ingested.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LatestBrandData'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    FactProductShoe:
+      $ref: 'components/schemas/Catalog.yaml#/components/schemas/FactProductShoe'
+    LatestBrandData:
+      $ref: 'components/schemas/Catalog.yaml#/components/schemas/LatestBrandData'
+    FactProductShoePage:
+      $ref: 'components/schemas/Catalog.yaml#/components/schemas/FactProductShoePage'
+    ErrorResponse:
+      $ref: 'components/schemas/Catalog.yaml#/components/schemas/ErrorResponse'

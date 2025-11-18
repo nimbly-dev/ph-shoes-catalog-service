@@ -1,0 +1,6 @@
+FROM maven:3-amazoncorretto-21 AS dev
+WORKDIR /app
+
+ENV JAVA_TOOL_OPTIONS="--add-opens=java.base/java.nio=ALL-UNNAMED -Dsnowflake.jdbc.enableArrow=false"
+
+CMD ["bash","-lc","cd ph-shoes-catalog-service-web && mvn -am clean compile -q && mvn spring-boot:run -Dspring-boot.run.profiles=dev -Dspring-boot.run.fork=false -Dspring-boot.run.jvmArguments='${JAVA_TOOL_OPTIONS}'"]

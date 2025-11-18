@@ -8,13 +8,13 @@
     <parent>
         <groupId>com.nimbly</groupId>
         <artifactId>ph-shoes-catalog-service</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>ph-shoes-catalog-service-core</artifactId>
     <name>ph-shoes-catalog-service-core</name>
     <description>Business logic core for PH-Shoes catalog service</description>
-    <version>1.0-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
