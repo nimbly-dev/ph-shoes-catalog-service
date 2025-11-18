@@ -16,3 +16,12 @@ spring:
 
   jpa:
     show-sql: true
+
+schema:
+  migrations:
+    enabled: false
+
+phshoes:
+  status:
+    service-id: ph-shoes-catalog-service
+    display-name: PH Shoes Catalog Service

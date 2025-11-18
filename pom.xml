@@ -57,6 +57,11 @@
 
     <repositories>
         <repository>
+            <id>github-nimbly-commons</id>
+            <name>ph-shoes-services-common</name>
+            <url>https://maven.pkg.github.com/nimbly-dev/ph-shoes-services-common</url>
+        </repository>
+        <repository>
             <id>spring-snapshots</id>
             <name>Spring Snapshots</name>
             <url>https://repo.spring.io/snapshot</url>
