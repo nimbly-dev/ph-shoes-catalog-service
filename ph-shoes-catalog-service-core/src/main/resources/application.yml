@@ -1,0 +1,11 @@
+spring:
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    deserialization:
+      adjust-dates-to-context-time-zone: false
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database-platform: com.nimbly.phshoesbackend.catalog.core.configs.dialect.SnowflakeDialect
