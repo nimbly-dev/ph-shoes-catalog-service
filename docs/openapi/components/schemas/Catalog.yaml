@@ -1,0 +1,94 @@
+components:
+  schemas:
+    FactProductShoe:
+      type: object
+      description: Flat representation of a shoe record in the PH Shoes catalog.
+      properties:
+        id:
+          type: string
+          description: Product identifier.
+        dwid:
+          type: string
+          description: Data warehouse identifier representing the extract batch.
+        brand:
+          type: string
+        title:
+          type: string
+        subtitle:
+          type: string
+        url:
+          type: string
+          format: uri
+        image:
+          type: string
+          format: uri
+        priceSale:
+          type: number
+          format: double
+        priceOriginal:
+          type: number
+          format: double
+        gender:
+          type: string
+        ageGroup:
+          type: string
+        year:
+          type: integer
+        month:
+          type: integer
+          minimum: 1
+          maximum: 12
+        day:
+          type: integer
+          minimum: 1
+          maximum: 31
+        extra:
+          type: object
+          nullable: true
+          description: Raw JSON payload with provider-specific attributes.
+      required: [id, dwid, brand, title]
+
+    LatestBrandData:
+      type: object
+      description: Latest available data warehouse identifier per brand.
+      properties:
+        brand:
+          type: string
+        latestDwid:
+          type: string
+      required: [brand, latestDwid]
+
+    FactProductShoePage:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/FactProductShoe'
+        page:
+          type: integer
+          minimum: 0
+        size:
+          type: integer
+          minimum: 1
+        totalElements:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+        first:
+          type: boolean
+        last:
+          type: boolean
+        empty:
+          type: boolean
+      required: [content, page, size, totalElements, totalPages, first, last, empty]
+
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        details:
+          type: string
+      required: [message]

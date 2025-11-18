@@ -13,7 +13,7 @@
 
     <groupId>com.nimbly</groupId>
     <artifactId>ph-shoes-catalog-service</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>ph-shoes-catalog-service</name>
     <description>Microservice for Backend Processes for Shoe Catalog in the PH Shoes Project</description>
