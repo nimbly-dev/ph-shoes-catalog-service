@@ -35,4 +35,4 @@ phshoes:
     service-id: ph-shoes-catalog-service
     display-name: Shoe Catalog
     environment: ${APP_ENV:prod}
-    version: ${APP_VERSION:1.0.0}
+    version: ${APP_VERSION:vprod}
