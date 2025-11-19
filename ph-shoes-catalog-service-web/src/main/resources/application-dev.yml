@@ -24,4 +24,6 @@ schema:
 phshoes:
   status:
     service-id: ph-shoes-catalog-service
-    display-name: PH Shoes Catalog Service
+    display-name: Shoe Catalog
+    environment: ${APP_ENV:local}
+    version: ${APP_VERSION:local}
