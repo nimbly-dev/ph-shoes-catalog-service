@@ -1,0 +1,40 @@
+name: Publish Catalog Core
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ "v*" ]
+  release:
+    types: [ created ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  deploy:
+    name: Publish Maven package
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Temurin JDK 21 + Maven settings
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          server-id: github-nimbly
+          server-username: GITHUB_ACTOR
+          server-password: GITHUB_TOKEN
+
+      - name: Verify toolchain
+        run: |
+          java -version
+          mvn -v
+
+      - name: Publish catalog core
+        run: mvn -B -U -pl ph-shoes-catalog-service-core -am -DskipTests deploy
