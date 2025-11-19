@@ -59,7 +59,7 @@
         <repository>
             <id>github-nimbly-commons</id>
             <name>ph-shoes-services-common</name>
-            <url>https://${env.GH_ACTOR}:${env.GH_PACKAGES_TOKEN}@maven.pkg.github.com/nimbly-dev/ph-shoes-services-common</url>
+            <url>https://maven.pkg.github.com/nimbly-dev/ph-shoes-services-common</url>
         </repository>
         <repository>
             <id>spring-snapshots</id>
