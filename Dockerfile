@@ -10,7 +10,8 @@ ARG GH_PACKAGES_TOKEN
 RUN set -eux; \
     : "${GH_ACTOR:?GH_ACTOR build arg is required}"; \
     : "${GH_PACKAGES_TOKEN:?GH_PACKAGES_TOKEN build arg is required}"; \
-    cat > /root/.m2/settings.xml <<EOF
+    mkdir -p /root/.m2; \
+    cat > /root/.m2/settings.xml <<'EOF'
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
