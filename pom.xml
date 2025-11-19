@@ -55,17 +55,6 @@
         </pluginManagement>
     </build>
 
-    <distributionManagement>
-        <repository>
-            <id>github-nimbly</id>
-            <url>https://maven.pkg.github.com/nimbly-dev/ph-shoes-catalog-service</url>
-        </repository>
-        <snapshotRepository>
-            <id>github-nimbly</id>
-            <url>https://maven.pkg.github.com/nimbly-dev/ph-shoes-catalog-service</url>
-        </snapshotRepository>
-    </distributionManagement>
-
     <repositories>
         <repository>
             <id>github-nimbly-commons</id>

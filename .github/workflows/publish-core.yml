@@ -17,7 +17,8 @@ jobs:
     name: Publish Maven package
     runs-on: ubuntu-latest
     env:
-      GITHUB_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+      GH_PACKAGES_USER: ${{ secrets.GH_PACKAGES_USER }}
+      GH_PACKAGES_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
     steps:
       - uses: actions/checkout@v4
 
@@ -28,8 +29,8 @@ jobs:
           java-version: '21'
           cache: maven
           server-id: github-nimbly
-          server-username: GITHUB_ACTOR
-          server-password: GITHUB_TOKEN
+          server-username: GH_PACKAGES_USER
+          server-password: GH_PACKAGES_TOKEN
 
       - name: Verify toolchain
         run: |

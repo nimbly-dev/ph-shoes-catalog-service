@@ -16,6 +16,17 @@
     <name>ph-shoes-catalog-service-core</name>
     <description>Business logic core for PH-Shoes catalog service</description>
 
+    <distributionManagement>
+        <repository>
+            <id>github-nimbly</id>
+            <url>https://maven.pkg.github.com/nimbly-dev/ph-shoes-catalog-service</url>
+        </repository>
+        <snapshotRepository>
+            <id>github-nimbly</id>
+            <url>https://maven.pkg.github.com/nimbly-dev/ph-shoes-catalog-service</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
