@@ -36,3 +36,16 @@ phshoes:
     display-name: Shoe Catalog
     environment: ${APP_ENV:prod}
     version: ${APP_VERSION:vprod}
+  api:
+    rate-limit:
+      enabled: true
+      default-window: 10m
+      global:
+        enabled: true
+        limit: 10000
+      per-ip:
+        enabled: true
+        limit: 200
+      per-user:
+        enabled: true
+        limit: 200
