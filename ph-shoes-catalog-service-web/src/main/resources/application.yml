@@ -35,6 +35,9 @@ schema:
     enabled: false
 
 phshoes:
+  security:
+    email:
+      enabled: false
   status:
     service-id: ph-shoes-catalog-service
     display-name: Shoe Catalog

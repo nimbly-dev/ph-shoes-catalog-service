@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.nimbly</groupId>
+        <groupId>com.nimbly.phshoesbackend.catalog</groupId>
         <artifactId>ph-shoes-catalog-service</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
@@ -22,7 +22,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.nimbly</groupId>
+            <groupId>com.nimbly.phshoesbackend.catalog</groupId>
             <artifactId>ph-shoes-catalog-service-core</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -49,14 +49,20 @@
             <version>0.2.8</version>
         </dependency>
         <dependency>
-            <groupId>com.nimbly.phshoesbackend.commons</groupId>
-            <artifactId>ph-shoes-services-common-core</artifactId>
+            <groupId>com.nimbly.phshoesbackend.starters</groupId>
+            <artifactId>ph-shoes-starter-services-common-core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.nimbly.phshoesbackend.starters</groupId>
+            <artifactId>ph-shoes-starter-services-common-web</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
