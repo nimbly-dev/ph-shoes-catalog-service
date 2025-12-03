@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.nimbly</groupId>
+        <groupId>com.nimbly.phshoesbackend.catalog</groupId>
         <artifactId>ph-shoes-catalog-service</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
@@ -33,6 +33,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>net.snowflake</groupId>
