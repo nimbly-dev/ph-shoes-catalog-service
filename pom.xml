@@ -4,11 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+    <!-- Standalone parent so this repo can build & publish independently; starter is used as a dependency, not as a parent POM -->
     <parent>
-        <groupId>com.nimbly.phshoesbackend.starters</groupId>
-        <artifactId>ph-shoes-starter-services</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../ph-shoes-starter-services/pom.xml</relativePath>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.5</version>
+        <relativePath/>
     </parent>
 
     <groupId>com.nimbly.phshoesbackend.catalog</groupId>
