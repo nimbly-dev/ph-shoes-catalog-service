@@ -23,6 +23,8 @@ schema:
 
 phshoes:
   status:
+    enabled: true
+    path: /system/status
     service-id: ph-shoes-catalog-service
     display-name: Shoe Catalog
     environment: ${APP_ENV:local}

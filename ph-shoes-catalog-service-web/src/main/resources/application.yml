@@ -39,6 +39,7 @@ phshoes:
     email:
       enabled: false
   status:
+    enabled: true
     service-id: ph-shoes-catalog-service
     display-name: Shoe Catalog
     environment: ${APP_ENV:local}

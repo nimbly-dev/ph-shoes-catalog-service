@@ -9,7 +9,11 @@ import org.springframework.data.web.config.EnableSpringDataWebSupport;
 @EnableSpringDataWebSupport
 @EntityScan("com.nimbly.phshoesbackend.catalog.core.model")
 @EnableJpaRepositories("com.nimbly.phshoesbackend.catalog.core.repository.jpa")
-@SpringBootApplication(scanBasePackages = "com.nimbly.phshoesbackend.catalog")
+@SpringBootApplication(scanBasePackages = {
+        "com.nimbly.phshoesbackend.catalog",
+        "com.nimbly.phshoesbackend.commons.core",
+        "com.nimbly.phshoesbackend.commons.web"
+})
 public class PhShoesBackendCatalogApplication {
 
 	public static void main(String[] args) {
