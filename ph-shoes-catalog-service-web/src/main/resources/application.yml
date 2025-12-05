@@ -43,3 +43,4 @@ phshoes:
     display-name: Shoe Catalog
     environment: ${APP_ENV:local}
     version: ${APP_VERSION:local}
+    path: /system/status
