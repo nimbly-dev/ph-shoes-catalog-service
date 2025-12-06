@@ -32,7 +32,7 @@ RUN mvn dependency:go-offline -B
 COPY ph-shoes-catalog-service-core ph-shoes-catalog-service-core
 COPY ph-shoes-catalog-service-web ph-shoes-catalog-service-web
 COPY docs docs
-RUN mvn -pl ph-shoes-catalog-service-web -am clean package -DskipTests
+RUN mvn -pl ph-shoes-catalog-service-web -am clean package -DskipTests && rm -f /root/.m2/settings.xml
 
 ########################################
 # Runtime stage
