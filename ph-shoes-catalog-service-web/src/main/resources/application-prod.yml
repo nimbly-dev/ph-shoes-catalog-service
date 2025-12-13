@@ -51,3 +51,8 @@ phshoes:
       per-user:
         enabled: true
         limit: 200
+
+app:
+  cors:
+    allowed-origins:
+      - "https://phshoesproject.com"
