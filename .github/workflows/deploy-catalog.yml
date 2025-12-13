@@ -41,6 +41,8 @@ jobs:
         run: |
           docker build \
             -f Dockerfile \
+            --build-arg GH_ACTOR=${{ secrets.GH_ACTOR }} \
+            --build-arg GH_PACKAGES_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }} \
             --no-cache \
             -t "$ECR_REPOSITORY_URI:$IMAGE_TAG" .
 
