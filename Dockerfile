@@ -42,5 +42,5 @@ WORKDIR /app
 
 COPY --from=builder /app/ph-shoes-catalog-service-web/target/*.jar app.jar
 ENV JAVA_TOOL_OPTIONS="--add-opens=java.base/java.nio=ALL-UNNAMED -Dsnowflake.jdbc.enableArrow=false"
-EXPOSE 8083
+EXPOSE 8080
 ENTRYPOINT ["sh","-c","java $JAVA_TOOL_OPTIONS -jar app.jar --spring.profiles.active=prod"]
