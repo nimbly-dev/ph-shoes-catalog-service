@@ -51,6 +51,14 @@
         </snapshotRepository>
     </distributionManagement>
 
-    <!-- Rely on parent (starter) + Maven central; old commons repo no longer needed -->
+    <repositories>
+        <repository>
+            <id>github-nimbly-commons</id>
+            <url>https://maven.pkg.github.com/nimbly-dev/ph-shoes-starter-services</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
 </project>
