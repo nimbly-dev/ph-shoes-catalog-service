@@ -1,4 +1,7 @@
 # src/main/resources/application-prod.yml
+server:
+  port: ${PORT:8080}
+
 spring:
   datasource:
     url: >-
