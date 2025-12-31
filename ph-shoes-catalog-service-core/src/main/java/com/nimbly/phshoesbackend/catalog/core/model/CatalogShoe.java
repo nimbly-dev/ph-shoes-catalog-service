@@ -1,25 +1,30 @@
 package com.nimbly.phshoesbackend.catalog.core.model;
 
-import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
+@IdClass(CatalogShoeId.class)
 @Table(
         name = "FACT_PRODUCT_SHOES",
         schema = "PRODUCTION_MARTS",
         catalog = "PH_SHOES_DB"
 )
 @Data
-public class FactProductShoes {
+public class CatalogShoe {
 
     //Composite key dwid + id
-    @EmbeddedId
-    @JsonUnwrapped
-    private FactProductShoesId key;
+    @Id
+    @Column(name = "ID", length = 16777216)
+    private String id;
+
+    @Id
+    @Column(name = "DWID", length = 16777216)
+    private String dwid;
 
     @Column(name = "BRAND", length = 16777216)
     private String brand;
@@ -60,3 +65,4 @@ public class FactProductShoes {
     @Column(name = "EXTRA", columnDefinition = "VARIANT")
     private String extra;
 }
+

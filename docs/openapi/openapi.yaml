@@ -10,11 +10,11 @@ tags:
     description: Catalog endpoints for querying fact_product_shoes data.
 
 paths:
-  /fact-product-shoes:
+  /catalog-shoes:
     get:
       tags: [CatalogProducts]
       summary: Search the PH Shoes catalog
-      operationId: listFactProductShoes
+      operationId: listCatalogShoes
       parameters:
         - in: query
           name: brand
@@ -108,14 +108,14 @@ paths:
           name: sort
           required: false
           schema: { type: string }
-          description: Optional sort definition in the form `field,(asc|desc)`.
+          description: Optional sort definition in the form `field,(asc|desc)` with a single field only. Allowed fields are ageGroup, brand, day, dwid, gender, id, month, priceOriginal, priceSale, subtitle, title, year.
       responses:
         '200':
           description: Page of catalog entries
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/FactProductShoePage'
+                $ref: '#/components/schemas/CatalogShoePage'
         '400':
           description: Invalid filters
           content:
@@ -123,11 +123,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
-  /fact-product-shoes/latest:
+  /catalog-shoes/latest:
     get:
       tags: [CatalogProducts]
       summary: Latest dwid per brand
-      operationId: getLatestFactProductShoes
+      operationId: getLatestCatalogShoes
       responses:
         '200':
           description: Latest snapshot id per brand currently ingested.
@@ -146,11 +146,11 @@ paths:
 
 components:
   schemas:
-    FactProductShoe:
-      $ref: 'components/schemas/Catalog.yaml#/components/schemas/FactProductShoe'
+    CatalogShoe:
+      $ref: 'components/schemas/Catalog.yaml#/components/schemas/CatalogShoe'
     LatestBrandData:
       $ref: 'components/schemas/Catalog.yaml#/components/schemas/LatestBrandData'
-    FactProductShoePage:
-      $ref: 'components/schemas/Catalog.yaml#/components/schemas/FactProductShoePage'
+    CatalogShoePage:
+      $ref: 'components/schemas/Catalog.yaml#/components/schemas/CatalogShoePage'
     ErrorResponse:
       $ref: 'components/schemas/Catalog.yaml#/components/schemas/ErrorResponse'
