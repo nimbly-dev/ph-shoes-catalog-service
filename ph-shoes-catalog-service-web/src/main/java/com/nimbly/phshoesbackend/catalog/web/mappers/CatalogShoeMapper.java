@@ -1,23 +1,22 @@
 package com.nimbly.phshoesbackend.catalog.web.mappers;
 
-import com.nimbly.phshoesbackend.catalog.core.model.FactProductShoes;
-import com.nimbly.phshoesbackend.catalog.core.repository.jpa.FactProductShoesSpecRepository;
-import com.nimbly.phshoesbackend.catalog.web.api.model.FactProductShoePage;
-import com.nimbly.phshoesbackend.catalog.web.api.model.FactProductShoePageContentInner;
+import com.nimbly.phshoesbackend.catalog.core.model.CatalogShoe;
+import com.nimbly.phshoesbackend.catalog.core.repository.jpa.CatalogShoeRepository;
+import com.nimbly.phshoesbackend.catalog.web.api.model.CatalogShoePage;
+import com.nimbly.phshoesbackend.catalog.web.api.model.CatalogShoePageContentInner;
 import com.nimbly.phshoesbackend.catalog.web.api.model.LatestBrandData;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import java.net.URI;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
-public class CatalogProductMapper {
+public class CatalogShoeMapper {
 
-    public FactProductShoePage toPage(Page<FactProductShoes> results) {
-        return new FactProductShoePage()
+    public CatalogShoePage toPage(Page<CatalogShoe> results) {
+        return new CatalogShoePage()
                 .content(results.getContent().stream().map(this::toContentDto).collect(Collectors.toList()))
                 .page(results.getNumber())
                 .size(results.getSize())
@@ -28,12 +27,10 @@ public class CatalogProductMapper {
                 .empty(results.isEmpty());
     }
 
-    private FactProductShoePageContentInner toContentDto(FactProductShoes entity) {
-        FactProductShoePageContentInner dto = new FactProductShoePageContentInner();
-        Optional.ofNullable(entity.getKey()).ifPresent(key -> {
-            dto.setId(key.getId());
-            dto.setDwid(key.getDwid());
-        });
+    private CatalogShoePageContentInner toContentDto(CatalogShoe entity) {
+        CatalogShoePageContentInner dto = new CatalogShoePageContentInner();
+        dto.setId(entity.getId());
+        dto.setDwid(entity.getDwid());
         dto.setBrand(entity.getBrand());
         dto.setTitle(entity.getTitle());
         dto.setSubtitle(entity.getSubtitle());
@@ -50,7 +47,7 @@ public class CatalogProductMapper {
         return dto;
     }
 
-    public LatestBrandData toLatestBrandData(FactProductShoesSpecRepository.LatestData latestData) {
+    public LatestBrandData toLatestBrandData(CatalogShoeRepository.LatestData latestData) {
         return new LatestBrandData()
                 .brand(latestData.getBrand())
                 .latestDwid(latestData.getLatestDwid());
@@ -67,3 +64,4 @@ public class CatalogProductMapper {
         }
     }
 }
+

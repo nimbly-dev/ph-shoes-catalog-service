@@ -1,6 +1,6 @@
 components:
   schemas:
-    FactProductShoe:
+    CatalogShoe:
       type: object
       description: Flat representation of a shoe record in the PH Shoes catalog.
       properties:
@@ -58,13 +58,13 @@ components:
           type: string
       required: [brand, latestDwid]
 
-    FactProductShoePage:
+    CatalogShoePage:
       type: object
       properties:
         content:
           type: array
           items:
-            $ref: '#/components/schemas/FactProductShoe'
+            $ref: '#/components/schemas/CatalogShoe'
         page:
           type: integer
           minimum: 0

@@ -1,4 +1,12 @@
 ########################################
+# Dev stage
+########################################
+FROM maven:3-amazoncorretto-21 AS dev
+WORKDIR /app
+ENV JAVA_TOOL_OPTIONS="--add-opens=java.base/java.nio=ALL-UNNAMED -Dsnowflake.jdbc.enableArrow=false"
+CMD ["bash","-lc","cd ph-shoes-catalog-service-web && mvn -am clean compile -q && mvn spring-boot:run -Dspring-boot.run.fork=false -Dspring-boot.run.jvmArguments=\"${JAVA_TOOL_OPTIONS}\""]
+
+########################################
 # Build stage
 ########################################
 FROM maven:3-amazoncorretto-21 AS builder
@@ -32,7 +40,7 @@ RUN mvn dependency:go-offline -B
 COPY ph-shoes-catalog-service-core ph-shoes-catalog-service-core
 COPY ph-shoes-catalog-service-web ph-shoes-catalog-service-web
 COPY docs docs
-RUN mvn -pl ph-shoes-catalog-service-web -am clean package -DskipTests && rm -f /root/.m2/settings.xml
+RUN mvn -pl ph-shoes-catalog-service-web -am clean package && rm -f /root/.m2/settings.xml
 
 ########################################
 # Runtime stage
@@ -43,4 +51,4 @@ WORKDIR /app
 COPY --from=builder /app/ph-shoes-catalog-service-web/target/*.jar app.jar
 ENV JAVA_TOOL_OPTIONS="--add-opens=java.base/java.nio=ALL-UNNAMED -Dsnowflake.jdbc.enableArrow=false"
 EXPOSE 8080
-ENTRYPOINT ["sh","-c","java $JAVA_TOOL_OPTIONS -jar app.jar --spring.profiles.active=prod"]
+ENTRYPOINT ["sh","-c","java $JAVA_TOOL_OPTIONS -jar app.jar"]

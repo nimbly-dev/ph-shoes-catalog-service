@@ -1,7 +1,7 @@
 package com.nimbly.phshoesbackend.catalog.core.repository.jpa;
 
-import com.nimbly.phshoesbackend.catalog.core.model.FactProductShoes;
-import com.nimbly.phshoesbackend.catalog.core.model.FactProductShoesId;
+import com.nimbly.phshoesbackend.catalog.core.model.CatalogShoe;
+import com.nimbly.phshoesbackend.catalog.core.model.CatalogShoeId;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
@@ -11,21 +11,21 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface FactProductShoesSpecRepository
-        extends JpaRepository<FactProductShoes, FactProductShoesId>,
-        JpaSpecificationExecutor<FactProductShoes> {
+public interface CatalogShoeRepository
+        extends JpaRepository<CatalogShoe, CatalogShoeId>,
+        JpaSpecificationExecutor<CatalogShoe> {
 
     // --- derived counts, no native SQL needed ---
     @Query("""
-    SELECT COUNT(DISTINCT f.key.id)
-      FROM FactProductShoes f
+    SELECT COUNT(DISTINCT f.id)
+      FROM CatalogShoe f
      WHERE LOWER(f.brand) = LOWER(:brand)
     """)
     long countDistinctIdsByBrand(@Param("brand") String brand);
 
     @Query("""
-    SELECT COUNT(DISTINCT f.key.id)
-      FROM FactProductShoes f
+    SELECT COUNT(DISTINCT f.id)
+      FROM CatalogShoe f
      WHERE LOWER(f.brand) = LOWER(:brand)
        AND f.priceSale < f.priceOriginal
     """)
@@ -39,10 +39,11 @@ public interface FactProductShoesSpecRepository
 
     @Query("""
       SELECT f.brand        AS brand,
-             MAX(f.key.dwid) AS latestDwid
-        FROM FactProductShoes f
+             MAX(f.dwid) AS latestDwid
+        FROM CatalogShoe f
        WHERE f.brand IS NOT NULL
        GROUP BY f.brand
       """)
     List<LatestData> findLatestDatePerBrand();
 }
+
