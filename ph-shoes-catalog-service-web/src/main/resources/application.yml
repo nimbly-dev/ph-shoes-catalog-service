@@ -69,7 +69,7 @@ schema:
 phshoes:
   security:
     email:
-      enabled: ${PHSHOES_SECURITY_EMAIL_ENABLED}
+      enabled: ${PHSHOES_SECURITY_EMAIL_ENABLED:false}
   status:
     enabled: true
     service-id: ph-shoes-catalog-service
