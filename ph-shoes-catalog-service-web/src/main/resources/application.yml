@@ -12,6 +12,10 @@ server:
   servlet:
     context-path: /api/v1
 
+springdoc:
+  api-docs:
+    enabled: ${SPRINGDOC_APIDOCS_ENABLED:false}
+
 spring:
   jackson:
     serialization:
