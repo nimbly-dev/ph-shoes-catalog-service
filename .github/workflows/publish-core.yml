@@ -37,4 +37,8 @@ jobs:
           mvn -v
 
       - name: Publish catalog core
+        env:
+          HTTP_PROXY: ""
+          HTTPS_PROXY: ""
+          NO_PROXY: "localhost,127.0.0.1,repo.maven.apache.org,repo1.maven.org"
         run: mvn -B -U -pl ph-shoes-catalog-service-core -am -DskipTests deploy
