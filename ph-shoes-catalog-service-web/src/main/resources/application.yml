@@ -1,11 +1,11 @@
 app:
   cors:
-    allowed-origins: ${CORS_ALLOWED_ORIGINS}
-    allowed-methods: ${CORS_ALLOWED_METHODS}
-    allowed-headers: ${CORS_ALLOWED_HEADERS}
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173,http://127.0.0.1:5173,https://www.phshoesproject.com,https://phshoesproject.com}
+    allowed-methods: ${CORS_ALLOWED_METHODS:GET,POST,PUT,DELETE,OPTIONS}
+    allowed-headers: ${CORS_ALLOWED_HEADERS:*}
     exposed-headers: []
-    allow-credentials: ${CORS_ALLOW_CREDENTIALS}
-    max-age: ${CORS_MAX_AGE}
+    allow-credentials: ${CORS_ALLOW_CREDENTIALS:true}
+    max-age: ${CORS_MAX_AGE:3600}
 
 server:
   port: ${PORT}
