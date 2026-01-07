@@ -52,7 +52,7 @@ spring:
 
 logging:
   level:
-    root: ${LOG_LEVEL_ROOT}
+    root: ${LOG_LEVEL_ROOT:INFO}
 
 management:
   endpoints:
