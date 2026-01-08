@@ -36,7 +36,7 @@ spring:
       data-source-properties:
         ENABLE_ARROW_RESULTSET: ${SNOWFLAKE_ENABLE_ARROW_RESULTSET}
   jpa:
-    show-sql: ${SPRING_JPA_SHOW_SQL}
+    show-sql: false
     hibernate:
       ddl-auto: none
     database-platform: com.nimbly.phshoesbackend.catalog.core.configs.dialect.SnowflakeDialect
