@@ -26,7 +26,7 @@ spring:
     url: jdbc:snowflake://${SNOWFLAKE_ACCOUNT}.snowflakecomputing.com?warehouse=${SNOWFLAKE_WAREHOUSE}&db=${SNOWFLAKE_DATABASE}&schema=${SNOWFLAKE_SCHEMA}&role=${SNOWFLAKE_ROLE}&JDBC_QUERY_RESULT_FORMAT=JSON
     username: ${SPRING_DATASOURCE_USERNAME}
     password: ${SPRING_DATASOURCE_PASSWORD}
-    driver-class-name: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME}
+    driver-class-name: net.snowflake.client.jdbc.SnowflakeDriver
     hikari:
       maximum-pool-size: ${DB_POOL_MAX_SIZE}
       minimum-idle: ${DB_POOL_MIN_IDLE}
